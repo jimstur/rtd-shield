@@ -14,7 +14,7 @@
 #include <SPI.h> // include the SPI library for the LTC2420 ADC communication
 #include <RTD_v1.h> // include the RTD library
 
-RTD furnaceRTD(0); // instance for monitoring furnace
+RTD furnaceRTD(0);
 RTD ambientRTD(1);
 RTD waterTankRTD(2);
 RTD nitrogenGasFlowRTD(3);
