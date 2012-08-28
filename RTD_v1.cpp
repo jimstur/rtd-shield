@@ -19,7 +19,7 @@
 #define WIRE_COMP_OFFSET -0.7 // mV
 #define VREF 2.31 // reference voltage (V)
 #define IEX 0.9537 // excitation current (mA)
-#define EOCPIN 12 // EOC pin for conversion monitoring
+#define EOCPIN 12 // !EOC pin for conversion monitoring
 
 const int _muxPin[] = {5, 4, 3}; // pins used for multiplexing
 const int _csPin = 10; // ADC cs pin
@@ -65,7 +65,7 @@ long RTD::ADC_READ() // function to read the ADC
 		//Serial.println(adcByte, BIN); // uncomment for debugging
 		adcByte &= 0x0F;
 		//Serial.println(adcByte, BIN); // uncomment for debugging
-		unsigned long adcValue = adcByte << 8;
+		long adcValue = adcByte << 8;
 		adcByte = SPI.transfer(0x00);
 		//Serial.println(adcByte, BIN); // uncomment for debugging
 		adcValue |= adcByte;
@@ -78,7 +78,7 @@ long RTD::ADC_READ() // function to read the ADC
 	}
 }
 
-double RTD::ADC_2_mV(unsigned long adcRaw) // convert raaw ADC data to mV
+double RTD::ADC_2_mV(long adcRaw) // convert raw ADC data to mV
 {
 	double mV =  (double)adcRaw*0.00000095367431640625*(double)VREF*1000 + (double)WIRE_COMP_OFFSET;
 	//Serial.println(mV); // uncomment for debugging
