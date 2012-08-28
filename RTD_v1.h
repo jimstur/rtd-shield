@@ -27,10 +27,10 @@ class RTD
 		int _nChannel;
 		void MUX_SELECT(int);
 		void ADC_INIT();
-		double ADC_2_mV(unsigned long);
+		double ADC_2_mV(long);
 		double OHM2CELSIUS(double);
 		long ADC_READ();
-		unsigned long _adcRaw;
+		long _adcRaw;
 };
  
  #endif 
